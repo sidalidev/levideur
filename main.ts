@@ -41,7 +41,9 @@ app.post("/signup", async (req, res) => {
       password: crypted_password,
     },
   })
+  // Gérener un token
   const access_token = jwt.sign({ id }, SECRET, { expiresIn: "3 hours" })
+  // Envoyer le token avec d'autres infos en bonus
   res.send({ id, email, token: access_token })
 })
 
